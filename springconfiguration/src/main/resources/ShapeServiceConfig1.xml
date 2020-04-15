@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+         http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+
+	<aop:aspectj-autoproxy />
+
+	<bean name="circle" class="com.reactiveworks.practice.aop.ex1.Circle">
+		<property name="name" value="Circle"></property>
+	</bean>
+
+	<bean name="triangle"
+		class="com.reactiveworks.practice.aop.ex1.Triangle">
+		<property name="name" value="Triangle"></property>
+	</bean>
+
+	<bean name="shapeService"
+		class="com.reactiveworks.practice.aop.ex1.ShapeService" autowire="byName"></bean>
+
+	<bean name="loggingAspect"
+		class="com.reactiveworks.practice.aop.ex1.LoggingAspect"></bean>
+</beans>

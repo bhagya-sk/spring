@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="addr"
+		class="com.reactiveworks.practice.beaninheritance.Address">
+		<constructor-arg value="kalaburagi"></constructor-arg>
+		<constructor-arg value="karnataka"></constructor-arg>
+		<constructor-arg value="585102"></constructor-arg>
+	</bean>
+
+	<bean id="emp1"
+		class="com.reactiveworks.practice.beaninheritance.Employee">
+
+		<constructor-arg value="emp"></constructor-arg>
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="10000"></constructor-arg>
+	</bean>
+
+	<!-- it needs constuctor Employee(name,id,salary,address ) to work -->
+	<bean id="emp2"
+		class="com.reactiveworks.practice.beaninheritance.Employee"
+		parent="emp1">
+		<constructor-arg ref="addr" name="addrs"></constructor-arg>
+	</bean>
+
+</beans>

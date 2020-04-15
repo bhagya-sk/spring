@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="ans1"
+		class="com.reactiveworks.practice.dependencyinjection.collection.ex2.Answer">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="answer1"></constructor-arg>
+		<constructor-arg value="12/3/2020"></constructor-arg>
+	</bean>
+
+	<bean id="ans2"
+		class="com.reactiveworks.practice.dependencyinjection.collection.ex2.Answer">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="answer2"></constructor-arg>
+		<constructor-arg value="13/3/2020"></constructor-arg>
+	</bean>
+
+	<bean id="user1"
+		class="com.reactiveworks.practice.dependencyinjection.collection.ex2.User">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="shweta"></constructor-arg>
+		<constructor-arg value="asdsf@gmail.com"></constructor-arg>
+	</bean>
+
+	<bean id="user2"
+		class="com.reactiveworks.practice.dependencyinjection.collection.ex2.User">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="abcd"></constructor-arg>
+		<constructor-arg value="abcd@gmail.com"></constructor-arg>
+	</bean>
+
+	<bean id="q"
+		class="com.reactiveworks.practice.dependencyinjection.collection.ex2.Question">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="q1"></constructor-arg>
+		<constructor-arg>
+			<map>
+				<entry key-ref="ans1" value-ref="user1"></entry>
+				<entry key-ref="ans2" value-ref="user2"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+</beans>

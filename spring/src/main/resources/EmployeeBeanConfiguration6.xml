@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="addr"
+		class="com.reactiveworks.practice.dependencyinjection.setterbased.Address">
+		<constructor-arg value="kalaburagi"></constructor-arg>
+		<constructor-arg value="karnataka"></constructor-arg>
+		<constructor-arg value="585102"></constructor-arg>
+	</bean>
+	
+	<bean id="addr1"
+		class="com.reactiveworks.practice.dependencyinjection.setterbased.Address">
+		<constructor-arg value="kalaburagi"></constructor-arg>
+		<constructor-arg value="karnataka"></constructor-arg>
+		<constructor-arg value="585104"></constructor-arg>
+	</bean>
+
+	<bean id="emp1"
+		class="com.reactiveworks.practice.dependencyinjection.setterbased.Employee" >
+		<property name="ename" value="a" ></property>
+		<property name="eId" value="1"></property>
+		<property name="salary" value="100000"></property>
+		<property name="addrs" ref="addr"></property>
+		<constructor-arg ref="addr1"></constructor-arg> 
+
+	</bean>
+
+
+</beans>

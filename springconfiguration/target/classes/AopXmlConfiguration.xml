@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+         http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+
+	<bean name="triangle"
+		class="com.reactiveworks.practice.aop.xmlconfiguration.Triangle">
+		<property name="name" value="triangle"></property>
+	</bean>
+
+	<bean name="circle"
+		class="com.reactiveworks.practice.aop.xmlconfiguration.Circle">
+		<property name="name" value="circle"></property>
+	</bean>
+
+	<bean name="shapeService"
+		class="com.reactiveworks.practice.aop.xmlconfiguration.ShapeService"
+		autowire="byName">
+
+	</bean>
+
+	<bean name="loggingAspect"
+		class="com.reactiveworks.practice.aop.xmlconfiguration.LoggingAspect">
+	</bean>
+
+	<aop:config>
+
+		<aop:aspect id="loggingOperation" ref="loggingAspect">
+
+			<aop:pointcut
+				expression="execution(public String com.reactiveworks.practice.aop.xmlconfiguration.Circle.getName())"
+				id="getNamePointCut" />
+
+			<aop:pointcut
+				expression="execution(public void com.reactiveworks.practice.aop.xmlconfiguration.Circle.setName(..))"
+				id="setNamePointCut" />
+
+			<!-- <aop:before pointcut="execution(public String com.reactiveworks.practice.aop.xmlconfiguration.Circle.getName())" 
+				></aop:before> method="logBefore" /> <aop:after pointcut="execution(public 
+				String com.reactiveworks.practice.aop.xmlconfiguration.Circle.getName())" 
+				method="logAfter" /> -->
+
+			<aop:around method="myadvice"
+				pointcut-ref="getNamePointCut" />
+
+			<aop:after-throwing method="exceptionThrown"
+				pointcut-ref="setNamePointCut" />
+
+			<aop:around method="myadvice"
+				pointcut-ref="setNamePointCut" />
+
+			<aop:after-returning method="methodCompletion"
+				pointcut-ref="setNamePointCut" />
+
+		</aop:aspect>
+
+	</aop:config>
+
+</beans>

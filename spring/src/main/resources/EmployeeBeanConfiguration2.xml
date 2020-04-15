@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="addr1"
+		class="com.reactiveworks.practice.dependencyinjection.Address">
+		<property name="city" value="kalaburagi"></property>
+		<property name="state" value="karnataka"></property>
+		<property name="pincode" value="585102"></property>
+	</bean>
+
+	<!-- setter dependency injection -->
+	<bean id="emp1"
+		class="com.reactiveworks.practice.dependencyinjection.Employee">
+		<property name="ename" value="qwert"></property>
+		<property name="eId" value="1"></property>
+		<property name="salary" value="20000"></property>
+		<property name="addrs" ref="addr1"></property>
+	</bean>
+
+	<!-- constructor dependency injection -->
+	<bean id="emp2"
+		class="com.reactiveworks.practice.dependencyinjection.Employee" >
+		<constructor-arg name="ename" value="qwert"/>
+		<!-- <property name="ename" value="qwert"></property> -->
+		<property name="eId" value="2"></property>
+		<property name="salary" value="20000"></property>
+		<!-- <constructor-arg ref="addr1"></constructor-arg> -->
+		<!-- or -->
+		<constructor-arg >
+			<ref bean="addr1" />
+		</constructor-arg>
+	</bean>
+
+</beans>

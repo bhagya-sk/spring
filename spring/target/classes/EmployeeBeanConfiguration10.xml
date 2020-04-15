@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="addr"
+		class="com.reactiveworks.practice.innerbean.Address">
+		<property name="city" value="xyz"></property>
+		<property name="state" value="abc"></property>
+		<property name="pincode" value="12345"></property>
+
+	</bean>
+
+	<bean id="emp2"
+		class="com.reactiveworks.practice.innerbean.Employee"
+		scope="prototype">
+		<property name="ename" value="qwert"></property>
+		<property name="eId" value="1"></property>
+		<property name="salary" value="20000"></property>
+		<property name="addrs" value="#{addr}"></property>
+	</bean>
+
+
+	<bean id="emp1"
+		class="com.reactiveworks.practice.innerbean.Employee">
+		<property name="ename" value="qwert"></property>
+		<property name="eId" value="1"></property>
+		<property name="salary" value="20000"></property>
+		<property name="addrs">
+			<bean id="addr"
+				class="com.reactiveworks.practice.innerbean.Address">
+				<property name="city" value="abc"></property>
+				<property name="state" value="abc"></property>
+				<property name="pincode" value="902334"></property>
+
+			</bean>
+		</property>
+	</bean>
+
+</beans>

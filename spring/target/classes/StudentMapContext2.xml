@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="subject1"
+		class="com.reactiveworks.practice.dependencyinjection.collection.map.Subject">
+		<property name="subName" value="maths"></property>
+		<property name="maxMarks" value="100"></property>
+		<property name="marks">
+			<map>
+				<entry key="test1" value="60"></entry>
+				<entry key="test2" value="90"></entry>
+				<entry key="test3" value="69"></entry>
+				<entry key="test4" value="78"></entry>
+			</map>
+
+		</property>
+	</bean>
+
+	<bean id="subject2"
+		class="com.reactiveworks.practice.dependencyinjection.collection.map.Subject">
+		<property name="subName" value="kannada"></property>
+		<property name="maxMarks" value="100"></property>
+		<property name="marks">
+			<map>
+				<entry key="test1" value="60"></entry>
+				<entry key="test2" value="90"></entry>
+				<entry key="test3" value="69"></entry>
+				<entry key="test4" value="78"></entry>
+			</map>
+
+		</property>
+	</bean>
+
+	<bean id="student"
+		class="com.reactiveworks.practice.dependencyinjection.collection.map.Student">
+		<constructor-arg value="s1"></constructor-arg>
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="subject1" />
+				<ref bean="subject2" />
+				<!-- <value></value> <value>78</value> <value>90</value> -->
+			</list>
+		</constructor-arg>
+	</bean>
+</beans>
